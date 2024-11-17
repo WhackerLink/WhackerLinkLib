@@ -8,8 +8,8 @@ namespace WhackerLinkLib.Models.IOSP
 {
     public class CALL_ALRT
     {
-        public string? SrcId { get; set; }
-        public string? DstId { get; set; }
+        public string SrcId { get; set; }
+        public string DstId { get; set; }
 
         public override string ToString()
         {

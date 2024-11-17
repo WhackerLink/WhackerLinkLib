@@ -8,8 +8,8 @@ namespace WhackerLinkLib.Models.IOSP
 {
     public class EMRG_ALRM_RSP
     {
-        public string? SrcId { get; set; }
-        public string? DstId { get; set; }
+        public string SrcId { get; set; }
+        public string DstId { get; set; }
 
         public override string ToString()
         {

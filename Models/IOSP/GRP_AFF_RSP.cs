@@ -9,9 +9,9 @@ namespace WhackerLinkLib.Models.IOSP
 {
     public class GRP_AFF_RSP
     {
-        public string? SrcId { get; set; }
-        public string? DstId { get; set; }
-        public string? SysId { get; set; }
+        public string SrcId { get; set; }
+        public string DstId { get; set; }
+        public string SysId { get; set; }
         public int Status { get; set; }
 
         public override string ToString()

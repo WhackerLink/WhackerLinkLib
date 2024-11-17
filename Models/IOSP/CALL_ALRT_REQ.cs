@@ -9,9 +9,9 @@ namespace WhackerLinkLib.Models.IOSP
 {
     public class CALL_ALRT_REQ
     {
-        public string? SrcId { get; set; }
-        public string? DstId { get; set; }
-        public Site? Site { get; set; }
+        public string SrcId { get; set; }
+        public string DstId { get; set; }
+        public Site Site { get; set; }
 
         public override string ToString()
         {

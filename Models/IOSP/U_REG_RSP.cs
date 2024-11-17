@@ -8,9 +8,9 @@ namespace WhackerLinkLib.Models.IOSP
 {
     public class U_REG_RSP
     {
-        public string? SrcId { get; set; }
-        public string? SysId { get; set; }
-        public string? Wacn { get; set; }
+        public string SrcId { get; set; }
+        public string SysId { get; set; }
+        public string Wacn { get; set; }
         public int Status { get; set; }
 
         public override string ToString()

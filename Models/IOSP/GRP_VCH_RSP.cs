@@ -9,9 +9,9 @@ namespace WhackerLinkLib.Models.IOSP
 {
     public class GRP_VCH_RSP
     {
-        public string? SrcId { get; set; }
-        public string? DstId { get; set; }
-        public string? Channel { get; set; }
+        public string SrcId { get; set; }
+        public string DstId { get; set; }
+        public string Channel { get; set; }
         public int Status { get; set; }
 
         public override string ToString()

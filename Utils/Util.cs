@@ -6,6 +6,7 @@ namespace WhackerLinkLib.Utils
 {
     public static class Util
     {
+        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
         public static void SpeakText(string text)
         {
             using (SpeechSynthesizer synthesizer = new SpeechSynthesizer())
