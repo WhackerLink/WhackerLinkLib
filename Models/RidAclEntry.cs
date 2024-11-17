@@ -8,6 +8,7 @@ namespace WhackerLinkLib.Models
     {
         public string Rid { get; set; }
         public bool Allowed { get; set; }
+        public string AuthKey { get; set; }
         public string Alias { get; set; }
     }
 }

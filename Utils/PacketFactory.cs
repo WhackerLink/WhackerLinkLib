@@ -54,5 +54,31 @@ namespace WhackerLinkLib.Utils
                 }
             };
         }
+
+        public static object CreateAuthDemand(string srcId)
+        {
+            return new
+            {
+                type = (int)PacketType.AUTH_DEMAND,
+                data = new AUTH_DEMAND
+                {
+                    SrcId = srcId,
+                }
+            };
+        }
+
+        public static object CreateAuthReply(string srcId, string authKey = null, ResponseType status = ResponseType.FAIL)
+        {
+            return new
+            {
+                type = (int)PacketType.AUTH_REPLY,
+                data = new AUTH_REPLY
+                {
+                    SrcId = srcId,
+                    AuthKey = authKey,
+                    Status = (int)status
+                }
+            };
+        }
     }
 }

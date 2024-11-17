@@ -23,6 +23,8 @@ namespace WhackerLinkLib.Models
         EMRG_ALRM_REQ = 0x12,
         EMRG_ALRM_RSP = 0x13,
         CALL_ALRT = 0x14,
-        CALL_ALRT_REQ = 0x15
+        CALL_ALRT_REQ = 0x15,
+        AUTH_DEMAND = 0x16,
+        AUTH_REPLY = 0x17
     }
 }
