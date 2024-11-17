@@ -15,7 +15,8 @@ namespace WhackerLinkLib.Models.Radio
             public string CodeplugVersion { get; set; }
             public string RadioAlias { get; set; }
             public string SerialNumber { get; set; }
-            public int Model { get; set; }
+            public string Model { get; set; }
+            public string InCarMode { get; set; }
         }
 
         public class RadioEgroConfiguration
