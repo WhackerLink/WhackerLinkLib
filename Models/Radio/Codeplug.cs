@@ -65,5 +65,18 @@ namespace WhackerLinkLib.Models.Radio
             }
             return null;
         }
+
+        public Channel GetChannelByName(string channelName)
+        {
+            foreach (var zone in Zones)
+            {
+                var channel = zone.Channels.FirstOrDefault(c => c.Name == channelName);
+                if (channel != null)
+                {
+                    return channel;
+                }
+            }
+            return null;
+        }
     }
 }
