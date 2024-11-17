@@ -52,5 +52,18 @@ namespace WhackerLinkLib.Models.Radio
         {
             return Systems.FirstOrDefault(s => s.Name == channel.System);
         }
+
+        public System GetSystemForChannel(string channelName)
+        {
+            foreach (var zone in Zones)
+            {
+                var channel = zone.Channels.FirstOrDefault(c => c.Name == channelName);
+                if (channel != null)
+                {
+                    return Systems.FirstOrDefault(s => s.Name == channel.System);
+                }
+            }
+            return null;
+        }
     }
 }
