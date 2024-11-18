@@ -18,6 +18,7 @@
 * 
 */
 
+using Microsoft.AspNetCore.Http;
 using WhackerLinkLib.Models;
 using WhackerLinkLib.Models.IOSP;
 
@@ -52,6 +53,51 @@ namespace WhackerLinkLib.Utils
                     SysId = "",
                     Site = site
                 }
+            };
+        }
+
+        public static object CreateVoiceChannelRequest(string srcId, string dstId, Site site)
+        {
+            return new
+            {
+                type = (int)PacketType.GRP_VCH_REQ,
+                data = new GRP_VCH_REQ
+                {
+                    SrcId = srcId,
+                    DstId = dstId,
+                    Site = site
+                }
+            };
+        }
+
+        public static object CreateVoiceChannelRelease(string srcId, string dstId, string channel, Site site)
+        {
+            return new
+            {
+                type = (int)PacketType.GRP_VCH_RLS,
+                data = new GRP_VCH_RLS
+                {
+                    SrcId = srcId,
+                    DstId = dstId,
+                    Site = site,
+                    Channel = channel
+                }
+            };
+        }
+
+        public static object CreateVoicePacket(string srcId, string dstId, string channel, byte[] audio, Site site)
+        {
+            return new
+            {
+                type = (int)PacketType.AUDIO_DATA,
+                data = audio,
+                voiceChannel = new VoiceChannel
+                {
+                    SrcId = srcId,
+                    DstId = dstId,
+                    Frequency = channel,
+                },
+                site
             };
         }
 
