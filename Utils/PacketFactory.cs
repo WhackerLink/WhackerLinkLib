@@ -101,6 +101,19 @@ namespace WhackerLinkLib.Utils
             };
         }
 
+        public static object CreateCallAlertRequest(string srcId, string dstId)
+        {
+            return new
+            {
+                type = (int)PacketType.CALL_ALRT_REQ,
+                data = new CALL_ALRT_REQ
+                {
+                    SrcId = srcId,
+                    DstId = dstId
+                }
+            };
+        }
+
         public static object CreateAuthDemand(string srcId)
         {
             return new
