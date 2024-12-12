@@ -101,6 +101,19 @@ namespace WhackerLinkLib.Utils
             };
         }
 
+        public static object CreateCallAlertRequest(string srcId, string dstId)
+        {
+            return new
+            {
+                type = (int)PacketType.CALL_ALRT_REQ,
+                data = new CALL_ALRT_REQ
+                {
+                    SrcId = srcId,
+                    DstId = dstId
+                }
+            };
+        }
+
         public static object CreateAuthDemand(string srcId)
         {
             return new
@@ -123,6 +136,21 @@ namespace WhackerLinkLib.Utils
                     SrcId = srcId,
                     AuthKey = authKey,
                     Status = (int)status
+                }
+            };
+        }
+
+        public static object CreateRelDemand(string srcId, string dstId, string voiceChannel, Site site)
+        {
+            return new
+            {
+                type = (int)PacketType.REL_DEMAND,
+                data = new REL_DEMND
+                {
+                    SrcId = srcId,
+                    DstId = dstId,
+                    Channel = voiceChannel,
+                    Site = site
                 }
             };
         }
