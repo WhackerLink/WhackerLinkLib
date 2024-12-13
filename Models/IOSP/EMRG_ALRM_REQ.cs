@@ -11,13 +11,20 @@ namespace WhackerLinkLib.Models.IOSP
     {
         public string SrcId { get; set; }
         public string DstId { get; set; }
+        public string Lat {  get; set; }
+        public string Long { get; set; }
         public Site Site { get; set; }
 
         public override PacketType PacketType => PacketType.EMRG_ALRM_REQ;
 
         public override string ToString()
         {
-            return $"EMRG_ALRM_REQ, srcId: {SrcId}, dstId: {DstId}";
+            string cords = string.Empty;
+
+            if (String.IsNullOrEmpty(Lat) || String.IsNullOrEmpty(Long))
+                cords = $", Lat: {Lat}, Long: {Long}";
+
+            return $"EMRG_ALRM_REQ, srcId: {SrcId}, dstId: {DstId}{cords}";
         }
     }
 }
