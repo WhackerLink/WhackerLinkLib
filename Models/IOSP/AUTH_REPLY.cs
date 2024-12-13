@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace WhackerLinkLib.Models.IOSP
 {
-    public class AUTH_REPLY
+    public class AUTH_REPLY : WlinkPacket
     {
         public string SrcId { get; set; }
         public string AuthKey { get; set; }
         public int Status { get; set; }
+
+        public override PacketType PacketType => PacketType.AUTH_REPLY;
 
         public override string ToString()
         {

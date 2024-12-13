@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace WhackerLinkLib.Models.IOSP
 {
-    public class REL_DEMND
+    public class REL_DEMND : WlinkPacket
     {
         public string SrcId { get; set; }
         public string DstId { get; set; }
         public string Channel { get; set; }
         public Site Site { get; set; }
+
+        public override PacketType PacketType => PacketType.REL_DEMAND;
 
         public override string ToString()
         {

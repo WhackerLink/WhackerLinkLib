@@ -10,8 +10,10 @@ using WhackerLinkLib.Models;
 
 namespace WhackerLinkLib.Models.IOSP
 {
-    public class AFF_UPDATE
+    public class AFF_UPDATE : WlinkPacket
     {
         public List<Affiliation> Affiliations;
+
+        public override PacketType PacketType => PacketType.AFF_UPDATE;
     }
 }
