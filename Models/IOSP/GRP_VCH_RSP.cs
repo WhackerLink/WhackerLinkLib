@@ -7,12 +7,14 @@ using WhackerLinkLib.Models;
 
 namespace WhackerLinkLib.Models.IOSP
 {
-    public class GRP_VCH_RSP
+    public class GRP_VCH_RSP : WlinkPacket
     {
         public string SrcId { get; set; }
         public string DstId { get; set; }
         public string Channel { get; set; }
         public int Status { get; set; }
+
+        public override PacketType PacketType => PacketType.GRP_VCH_RSP;
 
         public override string ToString()
         {

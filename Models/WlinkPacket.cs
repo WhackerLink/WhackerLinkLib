@@ -18,22 +18,24 @@
 * 
 */
 
-using System.Speech.Synthesis;
-
-namespace WhackerLinkLib.Utils
+namespace WhackerLinkLib.Models
 {
-    public static class Util
+    public abstract class WlinkPacket
     {
-        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
-        public static void SpeakText(string text)
-        {
-            using (SpeechSynthesizer synthesizer = new SpeechSynthesizer())
-            {
-                synthesizer.Volume = 100;  // 0...100
-                synthesizer.Rate = 0;     // -10...10
+        public abstract PacketType PacketType { get; }
 
-                synthesizer.Speak(text);
-            }
+        public object GetData()
+        {
+            return new
+            {
+                type = (int)PacketType,
+                data = this
+            };
+        }
+
+        public override string ToString()
+        {
+            return $"{PacketType}, data: {this}";
         }
     }
 }
