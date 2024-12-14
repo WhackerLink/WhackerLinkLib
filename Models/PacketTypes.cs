@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WhackerLinkLib.Models
+﻿namespace WhackerLinkLib.Models
 {
     public enum PacketType
     {
@@ -26,6 +20,8 @@ namespace WhackerLinkLib.Models
         CALL_ALRT_REQ = 0x15,
         AUTH_DEMAND = 0x16,
         AUTH_REPLY = 0x17,
-        REL_DEMAND = 0x18
+        REL_DEMAND = 0x18,
+        LOC_BCAST = 0x19,
+        SITE_BCAST = 0x20
     }
 }

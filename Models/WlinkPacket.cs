@@ -18,6 +18,9 @@
 * 
 */
 
+using Nancy.Json;
+using Newtonsoft.Json;
+
 namespace WhackerLinkLib.Models
 {
     public abstract class WlinkPacket
@@ -31,6 +34,15 @@ namespace WhackerLinkLib.Models
                 type = (int)PacketType,
                 data = this
             };
+        }
+
+        public string GetStrData()
+        {
+            return JsonConvert.SerializeObject(new
+            {
+                type = (int)PacketType,
+                data = this
+            });
         }
 
         public override string ToString()

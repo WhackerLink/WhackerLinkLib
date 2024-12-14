@@ -21,7 +21,7 @@ namespace WhackerLinkLib.Models.IOSP
         {
             string cords = string.Empty;
 
-            if (String.IsNullOrEmpty(Lat) || String.IsNullOrEmpty(Long))
+            if (!String.IsNullOrEmpty(Lat) || !String.IsNullOrEmpty(Long))
                 cords = $", Lat: {Lat}, Long: {Long}";
 
             return $"EMRG_ALRM_REQ, srcId: {SrcId}, dstId: {DstId}{cords}";
