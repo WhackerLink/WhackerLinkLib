@@ -42,7 +42,7 @@ namespace WhackerLinkLib.Interfaces
         event Action<GRP_VCH_RLS> OnVoiceChannelRelease;
         event Action<EMRG_ALRM_RSP> OnEmergencyAlarmResponse;
         event Action<CALL_ALRT> OnCallAlert;
-        event Action<byte[], VoiceChannel> OnAudioData;
+        event Action<AudioPacket> OnAudioData;
         event Action OnOpen;
         event Action OnClose;
     }
