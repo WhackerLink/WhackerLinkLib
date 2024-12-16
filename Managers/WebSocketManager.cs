@@ -1,5 +1,5 @@
 ﻿/*
-* WhackerLink - WhackerLinkConsoleV2
+* WhackerLink - WhackerLinkLib
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -22,15 +22,25 @@ using WhackerLinkLib.Handlers;
 
 namespace WhackerLinkLib.Managers
 {
+    /// <summary>
+    /// WhackerLink peer/client websocket manager for having multiple systems
+    /// </summary>
     public class WebSocketManager
     {
         private readonly Dictionary<string, WebSocketHandler> _webSocketHandlers;
 
+        /// <summary>
+        /// Creates an instance of <see cref="WebSocketManager"/>
+        /// </summary>
         public WebSocketManager()
         {
             _webSocketHandlers = new Dictionary<string, WebSocketHandler>();
         }
 
+        /// <summary>
+        /// Create a new <see cref="WebSocketHandler"/> for a new system
+        /// </summary>
+        /// <param name="systemId"></param>
         public void AddWebSocketHandler(string systemId)
         {
             if (!_webSocketHandlers.ContainsKey(systemId))
@@ -39,6 +49,12 @@ namespace WhackerLinkLib.Managers
             }
         }
 
+        /// <summary>
+        /// Return a <see cref="WebSocketHandler"/> by looking up a systemid
+        /// </summary>
+        /// <param name="systemId"></param>
+        /// <returns></returns>
+        /// <exception cref="KeyNotFoundException"></exception>
         public WebSocketHandler GetWebSocketHandler(string systemId)
         {
             if (_webSocketHandlers.TryGetValue(systemId, out var handler))
@@ -48,6 +64,10 @@ namespace WhackerLinkLib.Managers
             throw new KeyNotFoundException($"WebSocketHandler for system '{systemId}' not found.");
         }
 
+        /// <summary>
+        /// Delete a <see cref="WebSocketHandler"/> by system id
+        /// </summary>
+        /// <param name="systemId"></param>
         public void RemoveWebSocketHandler(string systemId)
         {
             if (_webSocketHandlers.TryGetValue(systemId, out var handler))
@@ -57,11 +77,19 @@ namespace WhackerLinkLib.Managers
             }
         }
 
+        /// <summary>
+        /// Check if the manager has a handler
+        /// </summary>
+        /// <param name="systemId"></param>
+        /// <returns></returns>
         public bool HasWebSocketHandler(string systemId)
         {
             return _webSocketHandlers.ContainsKey(systemId);
         }
 
+        /// <summary>
+        /// Cleanup
+        /// </summary>
         public void ClearAllWebSocketHandlers()
         {
             foreach (var handler in _webSocketHandlers.Values)

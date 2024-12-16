@@ -2,19 +2,33 @@
 using WhackerLinkLib.Models.Radio;
 using WhackerLinkLib.Utils;
 
-#nullable disable
-
 namespace WhackerLinkLib.UI
 {
+    /// <summary>
+    /// Radio Display class (for use with radio emulator clients)
+    /// </summary>
     public class RadioDisplayUpdater
     {
         private readonly IRadioDisplay _radioDisplay;
 
+        /// <summary>
+        /// Creates an instance of <see cref="RadioDisplayUpdater"/>
+        /// </summary>
+        /// <param name="radioDisplay"></param>
         public RadioDisplayUpdater(IRadioDisplay radioDisplay)
         {
             _radioDisplay = radioDisplay;
         }
 
+        /// <summary>
+        /// Update display
+        /// </summary>
+        /// <param name="codeplug"></param>
+        /// <param name="currentZoneIndex"></param>
+        /// <param name="currentChannelIndex"></param>
+        /// <param name="systemChange"></param>
+        /// <param name="zoneChange"></param>
+        /// <param name="tts"></param>
         public async void UpdateDisplay(Codeplug codeplug, int currentZoneIndex, int currentChannelIndex, bool systemChange = true, bool zoneChange = false, bool tts = true)
         {
             if (codeplug != null && codeplug.Zones.Count > 0)
@@ -34,8 +48,10 @@ namespace WhackerLinkLib.UI
                         Task.Run(() =>
                         {
                             if (zoneChange)
+#pragma warning disable CA1416 // Validate platform compatibility
                                 Util.SpeakText(zone.Name);
                             Util.SpeakText(channel.Name);
+#pragma warning restore CA1416 // Validate platform compatibility
                         });
                     }
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed

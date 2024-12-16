@@ -1,5 +1,5 @@
 ﻿/*
-* WhackerLink - WhackerLinkServer
+* WhackerLink - WhackerLinkLib
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,9 @@ using Newtonsoft.Json;
 
 namespace WhackerLinkLib.Models
 {
+    /// <summary>
+    /// Base class for a WhackerLink network packet
+    /// </summary>
     public abstract class WlinkPacket
     {
         public abstract PacketType PacketType { get; }

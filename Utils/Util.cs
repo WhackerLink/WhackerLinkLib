@@ -1,5 +1,5 @@
 ﻿/*
-* WhackerLink - WhackerLinkServer
+* WhackerLink - WhackerLinkLib
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,10 @@ namespace WhackerLinkLib.Utils
 {
     public static class Util
     {
+        /// <summary>
+        /// Helper to speak text
+        /// </summary>
+        /// <param name="text"></param>
         [System.Runtime.Versioning.SupportedOSPlatform("windows")]
         public static void SpeakText(string text)
         {
