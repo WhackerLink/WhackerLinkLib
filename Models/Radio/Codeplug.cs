@@ -63,6 +63,11 @@ namespace WhackerLinkLib.Models.Radio
             public int Port { get; set; }
             public string Rid { get; set; }
             public Site Site { get; set; }
+
+            public override string ToString()
+            {
+                return Name;
+            }
         }
 
         /// <summary>
