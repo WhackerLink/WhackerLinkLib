@@ -21,12 +21,13 @@
 namespace WhackerLinkLib.Models
 {
     /// <summary>
-    /// Radio Emulator error states
+    /// Enum for site state
     /// </summary>
-    public enum ErrorStates
+    public enum SiteStatus
     {
-        NONE,
-        CPG_CHECKSUM,
-        FW_FATAL
+        DOWN = 0x00,
+        UP = 0x01,
+        FAILSOFT = 0x02,
+        UNKOWN = 0xFF
     }
 }

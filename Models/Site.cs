@@ -1,5 +1,5 @@
 ﻿/*
-* WhackerLink - WhackerLinkServer
+* WhackerLink - WhackerLinkLib
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,12 @@
 * 
 */
 
-#nullable disable
 
 namespace WhackerLinkLib.Models
 {
+    /// <summary>
+    /// Object to represent a trunking Site
+    /// </summary>
     public class Site
     {
         public string Name { get; set; }
@@ -33,6 +35,9 @@ namespace WhackerLinkLib.Models
         public float Range { get; set; }
     }
 
+    /// <summary>
+    /// Location of a <see cref="Site"/>
+    /// </summary>
     public class Location
     {
         public string X { get; set; }

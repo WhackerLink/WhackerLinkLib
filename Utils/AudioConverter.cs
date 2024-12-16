@@ -1,5 +1,5 @@
 ﻿/*
-* WhackerLink - WhackerLinkServer
+* WhackerLink - WhackerLinkLib
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -20,11 +20,19 @@
 
 namespace WhackerLinkLib.Utils
 {
+    /// <summary>
+    /// Helper to convert audio between different chunk sizes
+    /// </summary>
     public static class AudioConverter
     {
         public const int OriginalPcmLength = 1600;
         public const int ExpectedPcmLength = 320;
 
+        /// <summary>
+        /// Helper to go from a big chunk size to smaller
+        /// </summary>
+        /// <param name="audioData"></param>
+        /// <returns></returns>
         public static List<byte[]> SplitToChunks(byte[] audioData)
         {
             List<byte[]> chunks = new List<byte[]>();
@@ -45,6 +53,11 @@ namespace WhackerLinkLib.Utils
             return chunks;
         }
 
+        /// <summary>
+        /// Helper to go from small chunks to a big chunk
+        /// </summary>
+        /// <param name="chunks"></param>
+        /// <returns></returns>
         public static byte[] CombineChunks(List<byte[]> chunks)
         {
             if (chunks.Count * ExpectedPcmLength != OriginalPcmLength)
