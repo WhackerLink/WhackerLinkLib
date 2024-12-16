@@ -78,7 +78,7 @@ namespace WhackerLinkLib.Handlers
                         OnCallAlert?.Invoke(data["data"].ToObject<CALL_ALRT>());
                         break;
                     case (int)PacketType.AUDIO_DATA:
-                        OnAudioData?.Invoke(data["data"].ToObject<byte[]>(), data["voiceChannel"].ToObject<VoiceChannel>());
+                        OnAudioData?.Invoke(data["data"].ToObject<AudioPacket>());
                         break;
                 }
             };
@@ -110,7 +110,7 @@ namespace WhackerLinkLib.Handlers
         public event Action<GRP_VCH_RLS> OnVoiceChannelRelease;
         public event Action<EMRG_ALRM_RSP> OnEmergencyAlarmResponse;
         public event Action<CALL_ALRT> OnCallAlert;
-        public event Action<byte[], VoiceChannel> OnAudioData;
+        public event Action<AudioPacket> OnAudioData;
         public event Action OnOpen;
         public event Action OnClose;
     }
