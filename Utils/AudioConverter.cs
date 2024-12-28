@@ -33,20 +33,20 @@ namespace WhackerLinkLib.Utils
         /// </summary>
         /// <param name="audioData"></param>
         /// <returns></returns>
-        public static List<byte[]> SplitToChunks(byte[] audioData)
+        public static List<byte[]> SplitToChunks(byte[] audioData, int OgLength = OriginalPcmLength, int ExepcetedLength = ExpectedPcmLength)
         {
             List<byte[]> chunks = new List<byte[]>();
 
-            if (audioData.Length != OriginalPcmLength)
+            if (audioData.Length != OgLength)
             {
-                Console.WriteLine($"Invalid PCM length: {audioData.Length}, expected: {OriginalPcmLength}");
+                Console.WriteLine($"Invalid PCM length: {audioData.Length}, expected: {OgLength}");
                 return chunks;
             }
 
-            for (int offset = 0; offset < OriginalPcmLength; offset += ExpectedPcmLength)
+            for (int offset = 0; offset < OgLength; offset += ExepcetedLength)
             {
                 byte[] chunk = new byte[ExpectedPcmLength];
-                Buffer.BlockCopy(audioData, offset, chunk, 0, ExpectedPcmLength);
+                Buffer.BlockCopy(audioData, offset, chunk, 0, ExepcetedLength);
                 chunks.Add(chunk);
             }
 
@@ -58,21 +58,21 @@ namespace WhackerLinkLib.Utils
         /// </summary>
         /// <param name="chunks"></param>
         /// <returns></returns>
-        public static byte[] CombineChunks(List<byte[]> chunks)
+        public static byte[] CombineChunks(List<byte[]> chunks, int OgLength = OriginalPcmLength, int ExepcetedLength = ExpectedPcmLength)
         {
-            if (chunks.Count * ExpectedPcmLength != OriginalPcmLength)
+            if (chunks.Count * ExepcetedLength != OgLength)
             {
-                Console.WriteLine($"Invalid number of chunks: {chunks.Count}, expected total length: {OriginalPcmLength}");
+                Console.WriteLine($"Invalid number of chunks: {chunks.Count}, expected total length: {OgLength}");
                 return null;
             }
 
-            byte[] combined = new byte[OriginalPcmLength];
+            byte[] combined = new byte[OgLength];
             int offset = 0;
 
             foreach (var chunk in chunks)
             {
-                Buffer.BlockCopy(chunk, 0, combined, offset, ExpectedPcmLength);
-                offset += ExpectedPcmLength;
+                Buffer.BlockCopy(chunk, 0, combined, offset, ExepcetedLength);
+                offset += ExepcetedLength;
             }
 
             return combined;
