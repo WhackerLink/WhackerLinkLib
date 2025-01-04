@@ -8,6 +8,7 @@ namespace WhackerLinkLib.Models
 {
     public class AudioPacket : WlinkPacket
     {
+        public bool LopServerVocode { get; set; } = false;
         public byte[] Data {  get; set; }
         public VoiceChannel VoiceChannel { get; set; }
         public AudioMode AudioMode { get; set; } = AudioMode.PCM_8_16;
