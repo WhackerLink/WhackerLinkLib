@@ -16,5 +16,10 @@ namespace WhackerLinkLib.Models.IOSP
         public string DstId { get; set; } = null;
 
         public override PacketType PacketType => PacketType.SPEC_FUNC;
+
+        public override string ToString()
+        {
+            return $"SPEC_FUNC, Function: {Function}, SrcId: {SrcId}, DstId: ${DstId}";
+        }
     }
 }
