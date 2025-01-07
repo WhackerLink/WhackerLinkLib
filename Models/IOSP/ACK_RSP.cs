@@ -19,7 +19,7 @@ namespace WhackerLinkLib.Models.IOSP
 
         public override string ToString()
         {
-            return $"ACK_RSP, Service: {Service}, SrcId: {SrcId}, DstId: ${DstId}";
+            return $"ACK_RSP, Service: {Service}, SrcId: {SrcId}, DstId: {DstId}";
         }
     }
 }
