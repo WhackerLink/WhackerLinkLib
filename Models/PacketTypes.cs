@@ -47,6 +47,7 @@ namespace WhackerLinkLib.Models
         LOC_BCAST = 0x19,
         SITE_BCAST = 0x20,
         STS_BCAST = 0x21,
-        SPEC_FUNC = 0x22
+        SPEC_FUNC = 0x22,
+        ACK_RSP = 0x23
     }
 }

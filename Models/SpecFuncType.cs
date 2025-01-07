@@ -11,9 +11,9 @@ namespace WhackerLinkLib.Models
     /// </summary>
     public static class SpecFuncType
     {
-        public static byte RESERVED = 0x00;
-        public static byte RID_INHIBIT = 0x01;
-        public static byte RID_UNINHIBIT = 0x02;
-        public static byte UNKOWN = 0xFF;
+        public const byte RESERVED = 0x00;
+        public const byte RID_INHIBIT = 0x01;
+        public const byte RID_UNINHIBIT = 0x02;
+        public const byte UNKOWN = 0xFF;
     }
 }
