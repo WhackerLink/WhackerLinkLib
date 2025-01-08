@@ -12,6 +12,7 @@ namespace WhackerLinkLib.Models.IOSP
     public class ACK_RSP : WlinkPacket
     {
         public PacketType Service { get; set; } = PacketType.UNKOWN;
+        public SpecFuncType Extended { get; set; } = SpecFuncType.UNKOWN;
         public string SrcId { get; set; } = null;
         public string DstId { get; set; } = null;
 
@@ -19,7 +20,8 @@ namespace WhackerLinkLib.Models.IOSP
 
         public override string ToString()
         {
-            return $"ACK_RSP, Service: {Service}, SrcId: {SrcId}, DstId: {DstId}";
+            var extendedInfo = Extended != SpecFuncType.UNKOWN ? $", Extended: {Extended}" : string.Empty;
+            return $"ACK_RSP, Service: {Service}{extendedInfo}, SrcId: {SrcId}, DstId: {DstId}";
         }
     }
 }

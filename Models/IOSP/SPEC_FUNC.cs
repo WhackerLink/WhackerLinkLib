@@ -19,7 +19,7 @@ namespace WhackerLinkLib.Models.IOSP
 
         public override string ToString()
         {
-            return $"SPEC_FUNC, Function: {Function}, SrcId: {SrcId}, DstId: ${DstId}";
+            return $"SPEC_FUNC, Function: {Function}, SrcId: {SrcId}, DstId: {DstId}";
         }
     }
 }
