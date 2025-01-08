@@ -29,7 +29,7 @@ namespace WhackerLinkLib.Models.Radio
         public RadioEgroConfiguration ErgonomicsWide { get; set; }
         public List<System> Systems { get; set; }
         public List<Zone> Zones { get; set; }
-        public List<ScanList> scanLists { get; set; }
+        public List<ScanList> scanList { get; set; }
 
         /// <summary>
         /// 
