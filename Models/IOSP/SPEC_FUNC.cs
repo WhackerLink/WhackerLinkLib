@@ -11,7 +11,7 @@ namespace WhackerLinkLib.Models.IOSP
     /// </summary>
     public class SPEC_FUNC : WlinkPacket
     {
-        public byte Function { get; set; } = SpecFuncType.UNKOWN;
+        public SpecFuncType Function { get; set; } = SpecFuncType.UNKOWN;
         public string SrcId { get; set; } = null;
         public string DstId { get; set; } = null;
 

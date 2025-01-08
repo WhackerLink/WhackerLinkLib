@@ -9,11 +9,11 @@ namespace WhackerLinkLib.Models
     /// <summary>
     /// List of special function types
     /// </summary>
-    public static class SpecFuncType
+    public enum SpecFuncType
     {
-        public const byte RESERVED = 0x00;
-        public const byte RID_INHIBIT = 0x01;
-        public const byte RID_UNINHIBIT = 0x02;
-        public const byte UNKOWN = 0xFF;
+        RESERVED = 0x00,
+        RID_INHIBIT = 0x01,
+        RID_UNINHIBIT = 0x02,
+        UNKOWN = 0xFF
     }
 }
