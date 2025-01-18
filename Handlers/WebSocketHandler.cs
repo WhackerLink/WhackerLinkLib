@@ -99,6 +99,12 @@ namespace WhackerLinkLib.Handlers
         /// <param name="message"></param>
         public void SendMessage(object message)
         {
+            if (_socket == null || _socket.ReadyState != WebSocketState.Open)
+            {
+                Console.WriteLine("Master connection not established to send message");
+                return;
+            }
+
             _socket.Send(JsonConvert.SerializeObject(message));
         }
 
