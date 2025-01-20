@@ -18,7 +18,7 @@
 * 
 */
 
-using WhackerLinkLib.Handlers;
+using WhackerLinkLib.Network;
 
 namespace WhackerLinkLib.Managers
 {
@@ -27,35 +27,35 @@ namespace WhackerLinkLib.Managers
     /// </summary>
     public class WebSocketManager
     {
-        private readonly Dictionary<string, WebSocketHandler> _webSocketHandlers;
+        private readonly Dictionary<string, Peer> _webSocketHandlers;
 
         /// <summary>
         /// Creates an instance of <see cref="WebSocketManager"/>
         /// </summary>
         public WebSocketManager()
         {
-            _webSocketHandlers = new Dictionary<string, WebSocketHandler>();
+            _webSocketHandlers = new Dictionary<string, Peer>();
         }
 
         /// <summary>
-        /// Create a new <see cref="WebSocketHandler"/> for a new system
+        /// Create a new <see cref="Peer"/> for a new system
         /// </summary>
         /// <param name="systemId"></param>
         public void AddWebSocketHandler(string systemId)
         {
             if (!_webSocketHandlers.ContainsKey(systemId))
             {
-                _webSocketHandlers[systemId] = new WebSocketHandler();
+                _webSocketHandlers[systemId] = new Peer();
             }
         }
 
         /// <summary>
-        /// Return a <see cref="WebSocketHandler"/> by looking up a systemid
+        /// Return a <see cref="Peer"/> by looking up a systemid
         /// </summary>
         /// <param name="systemId"></param>
         /// <returns></returns>
         /// <exception cref="KeyNotFoundException"></exception>
-        public WebSocketHandler GetWebSocketHandler(string systemId)
+        public Peer GetWebSocketHandler(string systemId)
         {
             if (_webSocketHandlers.TryGetValue(systemId, out var handler))
             {
@@ -65,7 +65,7 @@ namespace WhackerLinkLib.Managers
         }
 
         /// <summary>
-        /// Delete a <see cref="WebSocketHandler"/> by system id
+        /// Delete a <see cref="Peer"/> by system id
         /// </summary>
         /// <param name="systemId"></param>
         public void RemoveWebSocketHandler(string systemId)

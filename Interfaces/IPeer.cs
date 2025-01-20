@@ -26,7 +26,7 @@ namespace WhackerLinkLib.Interfaces
     /// <summary>
     /// WhackerLink client/peer websocket handler interface
     /// </summary>
-    public interface IWebSocketHandler
+    public interface IPeer
     {
         bool IsConnected { get; }
 
