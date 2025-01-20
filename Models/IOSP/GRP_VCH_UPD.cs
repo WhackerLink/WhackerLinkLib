@@ -4,7 +4,7 @@
     {
         public VoiceChannel VoiceChannel { get; set; }
 
-        public override PacketType PacketType => PacketType.GRP_VCH_RSP;
+        public override PacketType PacketType => PacketType.GRP_VCH_UPD;
 
         public override string ToString()
         {
