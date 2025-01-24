@@ -49,6 +49,7 @@ namespace WhackerLinkLib.Models
         STS_BCAST = 0x21,
         SPEC_FUNC = 0x22,
         ACK_RSP = 0x23,
-        GRP_VCH_UPD = 0x24
+        GRP_VCH_UPD = 0x24,
+        NET_FAIL = 0x25
     }
 }
