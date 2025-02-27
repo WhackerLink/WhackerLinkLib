@@ -77,5 +77,23 @@ namespace WhackerLinkLib.Utils
 
             return combined;
         }
+
+        /// <summary>
+        /// From https://github.com/W3AXL/rc2-dvm/blob/main/rc2-dvm/Audio.cs
+        /// </summary>
+        /// <param name="pcm16"></param>
+        /// <returns></returns>
+        public static float[] PcmToFloat(short[] pcm16)
+        {
+            float[] floats = new float[pcm16.Length];
+            for (int i = 0; i < pcm16.Length; i++)
+            {
+                float v = (float)pcm16[i] / (float)short.MaxValue;
+                if (v > 1) { v = 1; }
+                if (v < -1) { v = -1; }
+                floats[i] = v;
+            }
+            return floats;
+        }
     }
 }
