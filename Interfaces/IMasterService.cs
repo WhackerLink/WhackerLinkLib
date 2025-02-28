@@ -35,6 +35,7 @@ namespace WhackerLinkLib.Interfaces
         List<RidAclEntry> GetRidAcl();
         bool GetRidAclEnabled();
         void Start(CancellationToken cancellationToken);
-        void BroadcastPacket(string packet);
+        void BroadcastPacket(string packet, string skipClientId = null);
+        void BroadcastPacket(string message, List<string> clientIds, string skipClientId = null);
     }
 }

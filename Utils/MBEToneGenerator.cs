@@ -22,8 +22,6 @@ namespace WhackerLinkLib.Utils
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static void AmbeEncodeSingleTone(int tone_freq_hz, char tone_amplitude, [Out] byte[] codeword)
         {
-            codeword = new byte[8];
-
             // U bit vectors
             // u0 and u1 are 12 bits
             // u2 is 11 bits
