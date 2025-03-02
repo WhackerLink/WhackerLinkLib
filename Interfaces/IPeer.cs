@@ -44,6 +44,7 @@ namespace WhackerLinkLib.Interfaces
         event Action<CALL_ALRT> OnCallAlert;
         event Action<AudioPacket> OnAudioData;
         event Action OnOpen;
+        event Action OnReconnecting;
         event Action OnClose;
     }
 }

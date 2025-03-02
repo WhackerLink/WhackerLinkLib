@@ -18,6 +18,7 @@
 * 
 */
 
+using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebSocketSharp;
@@ -33,23 +34,40 @@ namespace WhackerLinkLib.Network
     public class Peer : IPeer
     {
         private WebSocket _socket;
+        private string _address;
+        private int _port;
+        private bool _isReconnecting;
+        private bool _isDisconnecting;
+        private readonly object _reconnectLock = new();
+        private const int ReconnectIntervalSeconds = 5;
 
         public bool IsConnected => _socket != null && _socket.IsAlive;
 
-        /// <summary>
-        /// Helper to make a connection to a WhackerLink master
-        /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        public void Connect(string address, int port)
+        private void CreateWebSocket()
         {
-            _socket = new WebSocket($"ws://{address}:{port}/client");
-            _socket.OnOpen += (sender, e) => OnOpen?.Invoke();
-            _socket.OnClose += (sender, e) => OnClose?.Invoke();
+            _socket = new WebSocket($"ws://{_address}:{_port}/client");
+
+            _socket.OnOpen += (sender, e) =>
+            {
+                _isReconnecting = false;
+                OnOpen?.Invoke();
+            };
+
+            _socket.OnClose += (sender, e) =>
+            {
+                OnClose?.Invoke();
+
+                if (!_isDisconnecting)
+                {
+                    StartReconnect();
+                }
+            };
+
             _socket.OnMessage += (sender, e) =>
             {
                 var data = JObject.Parse(e.Data);
                 var type = Convert.ToInt32(data["type"]);
+
                 switch (type)
                 {
                     case (int)PacketType.U_REG_RSP:
@@ -81,14 +99,64 @@ namespace WhackerLinkLib.Network
                         break;
                 }
             };
+
             _socket.Connect();
         }
 
         /// <summary>
-        /// Kill connection to a WhackerLink Master
+        /// Internal helper to reconnect a lost connection
+        /// </summary>
+        private void StartReconnect()
+        {
+            lock (_reconnectLock)
+            {
+                if (_isReconnecting) return;
+                _isReconnecting = true;
+            }
+
+            new Thread(() =>
+            {
+                while (_isReconnecting && !_isDisconnecting)
+                {
+                    OnReconnecting?.Invoke();
+                    Thread.Sleep(ReconnectIntervalSeconds * 1000);
+
+                    if (_isDisconnecting) return;
+
+                    try
+                    {
+                        CreateWebSocket();
+                        if (_socket.IsAlive)
+                        {
+                            _isReconnecting = false;
+                            return;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        //Console.WriteLine($"Reconnection failed: {ex.Message}");
+                    }
+                }
+            }).Start();
+        }
+
+        /// <summary>
+        /// Connect to a WhackerLink master
+        /// </summary>
+        public void Connect(string address, int port)
+        {
+            _address = address;
+            _port = port;
+            _isDisconnecting = false;
+            CreateWebSocket();
+        }
+
+        /// <summary>
+        /// Disconnect from WhackerLink master
         /// </summary>
         public void Disconnect()
         {
+            _isDisconnecting = true;
             _socket?.Close();
         }
 
@@ -117,6 +185,7 @@ namespace WhackerLinkLib.Network
         public event Action<CALL_ALRT> OnCallAlert;
         public event Action<AudioPacket> OnAudioData;
         public event Action OnOpen;
+        public event Action OnReconnecting;
         public event Action OnClose;
     }
 }
