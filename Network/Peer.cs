@@ -47,8 +47,6 @@ namespace WhackerLinkLib.Network
 
         private void CreateWebSocket()
         {
-            Console.WriteLine(AuthKeyManager.HashKey(_authKey));
-
             _socket = new WebSocket($"ws://{_address}:{_port}/client?authKey={AuthKeyManager.HashKey(_authKey)}");
 
             _socket.OnOpen += (sender, e) =>
