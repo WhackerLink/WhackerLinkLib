@@ -42,6 +42,11 @@ namespace WhackerLinkLib.Managers
 
         public static string HashKey(string key)
         {
+            if (string.IsNullOrWhiteSpace(key))
+                return string.Empty;
+
+            key = key.Trim();
+
             using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] bytes = Encoding.UTF8.GetBytes(key);
