@@ -30,7 +30,7 @@ namespace WhackerLinkLib.Interfaces
     {
         bool IsConnected { get; }
 
-        void Connect(string address, int port);
+        void Connect(string address, int port, string authKey = "UNAUTH");
         void Disconnect();
         void SendMessage(object message);
 

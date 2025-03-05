@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebSocketSharp;
 using WhackerLinkLib.Interfaces;
+using WhackerLinkLib.Managers;
 using WhackerLinkLib.Models;
 using WhackerLinkLib.Models.IOSP;
 
@@ -36,6 +37,7 @@ namespace WhackerLinkLib.Network
         private WebSocket _socket;
         private string _address;
         private int _port;
+        private string _authKey;
         private bool _isReconnecting;
         private bool _isDisconnecting;
         private readonly object _reconnectLock = new();
@@ -45,7 +47,7 @@ namespace WhackerLinkLib.Network
 
         private void CreateWebSocket()
         {
-            _socket = new WebSocket($"ws://{_address}:{_port}/client");
+            _socket = new WebSocket($"ws://{_address}:{_port}/client?authKey={AuthKeyManager.HashKey(_authKey)}");
 
             _socket.OnOpen += (sender, e) =>
             {
@@ -143,10 +145,11 @@ namespace WhackerLinkLib.Network
         /// <summary>
         /// Connect to a WhackerLink master
         /// </summary>
-        public void Connect(string address, int port)
+        public void Connect(string address, int port, string authKey = "UNAUTH")
         {
             _address = address;
             _port = port;
+            _authKey = authKey;
             _isDisconnecting = false;
             CreateWebSocket();
         }
