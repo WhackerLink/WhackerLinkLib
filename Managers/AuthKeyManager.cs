@@ -23,10 +23,16 @@ using System.Text;
 
 namespace WhackerLinkLib.Managers
 {
+    /// <summary>
+    /// Manages authentication keys for WebSocket connections
+    /// </summary>
     public class AuthKeyManager
     {
         private readonly Dictionary<string, HashSet<string>> masterAuthKeys;
 
+        /// <summary>
+        /// Creates an instance of <see cref="AuthKeyManager"/> with a set of authentication keys per master
+        /// </summary>
         public AuthKeyManager(Dictionary<string, List<string>> authKeys)
         {
             masterAuthKeys = authKeys.ToDictionary(
@@ -35,11 +41,22 @@ namespace WhackerLinkLib.Managers
             );
         }
 
+        /// <summary>
+        /// Validates whether the provided authentication key is valid for a given master
+        /// </summary>
+        /// <param name="masterName">The name of the master</param>
+        /// <param name="providedKey">The authentication key provided by the client</param>
+        /// <returns>True if the key is valid, otherwise false</returns>
         public bool IsValidKey(string masterName, string providedHashedKey)
         {
             return masterAuthKeys.TryGetValue(masterName, out var keys) && keys.Contains(providedHashedKey);
         }
 
+        /// <summary>
+        /// Helper to hash auth key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static string HashKey(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
