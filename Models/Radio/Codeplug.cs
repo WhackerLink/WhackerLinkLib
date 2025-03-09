@@ -61,9 +61,13 @@ namespace WhackerLinkLib.Models.Radio
         {
             public string Name { get; set; }
             public string Address { get; set; }
+            public uint PeerId { get; set; } = 0;
             public int Port { get; set; }
             public string Rid { get; set; }
             public string AuthKey { get; set; } = "UNAUTH";
+            public string AliasPath { get; set; } = "./alias.yml";
+            public List<RadioAlias> RidAlias { get; set; } = null;
+            public bool IsDvm { get; set; } = false;
             public Site Site { get; set; }
 
             public override string ToString()
@@ -89,6 +93,30 @@ namespace WhackerLinkLib.Models.Radio
             public string Name { get; set; }
             public string System { get; set; }
             public string Tgid { get; set; }
+            public string EncryptionKey { get; set; }
+            public string AlgoId { get; set; } = "0x80";
+            public string KeyId { get; set; }
+
+            public ushort GetKeyId()
+            {
+                return Convert.ToUInt16(KeyId, 16);
+            }
+
+            public byte GetAlgoId()
+            {
+                return Convert.ToByte(AlgoId, 16);
+            }
+
+            public byte[] GetEncryptionKey()
+            {
+                if (EncryptionKey == null)
+                    return [];
+
+                return EncryptionKey
+                    .Split(',')
+                    .Select(s => Convert.ToByte(s.Trim(), 16))
+                    .ToArray();
+            }
         }
 
         /// <summary>
