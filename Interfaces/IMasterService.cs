@@ -19,7 +19,9 @@
 */
 
 using Serilog;
+using WhackerLinkLib.Managers;
 using WhackerLinkLib.Models;
+using WhackerLinkServer.Managers;
 
 namespace WhackerLinkLib.Interfaces
 {
@@ -33,6 +35,7 @@ namespace WhackerLinkLib.Interfaces
         List<VoiceChannel> GetVoiceChannels();
         List<Site> GetSites();
         List<RidAclEntry> GetRidAcl();
+        AuthKeyFileManager GetAuthManager();
         bool GetRidAclEnabled();
         void Start(CancellationToken cancellationToken);
         void BroadcastPacket(string packet, string skipClientId = null);
