@@ -79,6 +79,26 @@ namespace WhackerLinkLib.Utils
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="samples"></param>
+        /// <param name="thresholdDb"></param>
+        /// <returns></returns>
+        public static float[] ApplyNoiseGate(float[] samples, float thresholdDb = -40f)
+        {
+            float threshold = (float)Math.Pow(10, thresholdDb / 20.0); // Convert dB to linear amplitude
+
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (Math.Abs(samples[i]) < threshold)
+                {
+                    samples[i] = 0f; // Mute samples below threshold
+                }
+            }
+            return samples;
+        }
+
+        /// <summary>
         /// From https://github.com/W3AXL/rc2-dvm/blob/main/rc2-dvm/Audio.cs
         /// </summary>
         /// <param name="pcm16"></param>
@@ -94,6 +114,24 @@ namespace WhackerLinkLib.Utils
                 floats[i] = v;
             }
             return floats;
+        }
+
+        /// <summary>
+        /// From https://github.com/W3AXL/rc2-dvm/blob/main/rc2-dvm/Audio.cs
+        /// </summary>
+        /// <param name="pcm16"></param>
+        /// <returns></returns>
+        public static short[] FloatToPcm(float[] floats)
+        {
+            short[] pcm16 = new short[floats.Length];
+            for (int i = 0; i < floats.Length; i++)
+            {
+                int v = (int)(floats[i] * short.MaxValue);
+                if (v > short.MaxValue) { v = short.MaxValue; }
+                if (v < short.MinValue) { v = -short.MinValue; }
+                pcm16[i] = (short)v;
+            }
+            return pcm16;
         }
     }
 }
