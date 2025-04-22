@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2024-2025 Caleb H. (K4PHP) caleb.k4php@gmail.com
  *
- * This file is part of the WhackerLinkServer project.
+ * This file is part of the WhackerLinkLib project.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -45,3 +45,4 @@ namespace WhackerLinkLib.Interfaces
         Codeplug.System CurrentSystem { get; set; }
     }
 }
+
