@@ -13,7 +13,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-#if AMBEVOCODE
+#if AMBEVOCODE || WINDOWS
 namespace WhackerLinkLib.Vocoder
 {
     /// <summary>

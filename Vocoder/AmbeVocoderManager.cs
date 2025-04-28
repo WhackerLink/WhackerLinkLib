@@ -18,7 +18,7 @@
 * 
 */
 
-#if AMBEVOCODE
+#if AMBEVOCODE || WINDOWS
 namespace WhackerLinkLib.Vocoder
 {
     public class AmbeVocoderManager
