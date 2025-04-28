@@ -94,6 +94,9 @@ namespace WhackerLinkLib.Network
                     case (int)PacketType.EMRG_ALRM_RSP:
                         OnEmergencyAlarmResponse?.Invoke(data["data"].ToObject<EMRG_ALRM_RSP>());
                         break;
+                    case (int)PacketType.ACK_RSP:
+                        OnAckResponse?.Invoke(data["data"].ToObject<ACK_RSP>());
+                        break;
                     case (int)PacketType.CALL_ALRT:
                         OnCallAlert?.Invoke(data["data"].ToObject<CALL_ALRT>());
                         break;
@@ -187,6 +190,7 @@ namespace WhackerLinkLib.Network
         public event Action<GRP_VCH_RLS> OnVoiceChannelRelease;
         public event Action<EMRG_ALRM_RSP> OnEmergencyAlarmResponse;
         public event Action<CALL_ALRT> OnCallAlert;
+        public event Action<ACK_RSP> OnAckResponse;
         public event Action<AudioPacket> OnAudioData;
         public event Action OnOpen;
         public event Action OnReconnecting;
