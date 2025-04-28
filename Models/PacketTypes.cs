@@ -55,4 +55,3 @@ namespace WhackerLinkLib.Models
         GRP_AFF_RMV = 0x26
     }
 }
-

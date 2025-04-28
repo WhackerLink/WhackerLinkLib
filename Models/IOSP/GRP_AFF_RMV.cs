@@ -12,7 +12,7 @@ namespace WhackerLinkLib.Models.IOSP
         public string DstId { get; set; }
         public Site Site { get; set; }
 
-        public override PacketType PacketType => PacketType.GRP_AFF_REQ;
+        public override PacketType PacketType => PacketType.GRP_AFF_RMV;
 
         public override string ToString()
         {
