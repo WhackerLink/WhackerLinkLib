@@ -19,7 +19,6 @@
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  */
 
-using Nancy.Json;
 using Newtonsoft.Json;
 
 namespace WhackerLinkLib.Models

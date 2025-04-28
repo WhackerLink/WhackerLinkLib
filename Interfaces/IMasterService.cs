@@ -31,6 +31,7 @@ namespace WhackerLinkLib.Interfaces
     /// </summary>
     public interface IMasterService
     {
+        string Name { get; }
         ILogger Logger { get; }
         List<Affiliation> GetAffiliations();
         List<VoiceChannel> GetVoiceChannels();
