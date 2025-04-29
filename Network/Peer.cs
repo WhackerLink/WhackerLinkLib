@@ -100,6 +100,9 @@ namespace WhackerLinkLib.Network
                     case (int)PacketType.CALL_ALRT:
                         OnCallAlert?.Invoke(data["data"].ToObject<CALL_ALRT>());
                         break;
+                    case (int)PacketType.SPEC_FUNC:
+                        OnSpecialFunction?.Invoke(data["data"].ToObject<SPEC_FUNC>());
+                        break;
                     case (int)PacketType.AUDIO_DATA:
                         OnAudioData?.Invoke(data["data"].ToObject<AudioPacket>());
                         break;
@@ -191,6 +194,7 @@ namespace WhackerLinkLib.Network
         public event Action<EMRG_ALRM_RSP> OnEmergencyAlarmResponse;
         public event Action<CALL_ALRT> OnCallAlert;
         public event Action<ACK_RSP> OnAckResponse;
+        public event Action<SPEC_FUNC> OnSpecialFunction;
         public event Action<AudioPacket> OnAudioData;
         public event Action OnOpen;
         public event Action OnReconnecting;

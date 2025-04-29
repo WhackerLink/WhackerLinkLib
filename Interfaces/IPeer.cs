@@ -44,6 +44,7 @@ namespace WhackerLinkLib.Interfaces
         event Action<EMRG_ALRM_RSP> OnEmergencyAlarmResponse;
         event Action<CALL_ALRT> OnCallAlert;
         event Action<ACK_RSP> OnAckResponse;
+        event Action<SPEC_FUNC> OnSpecialFunction;
         event Action<AudioPacket> OnAudioData;
         event Action OnOpen;
         event Action OnReconnecting;
