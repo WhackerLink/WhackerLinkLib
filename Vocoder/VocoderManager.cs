@@ -43,15 +43,15 @@ namespace WhackerLinkLib.Vocoder
         /// <summary>
         /// Removes and disposes of a vocoder instance.
         /// </summary>
-        public void RemoveVocoder(string channelId)
+        public void RemoveVocoder(string dstId)
         {
-            if (vocoderInstances.TryRemove(channelId, out var instance))
+            if (vocoderInstances.TryRemove(dstId, out var instance))
             {
                 lock (lockObj)
                 {
                     //instance.Decoder.Dispose();
                     //instance.Encoder.Dispose();
-                    logger.Information("Removed vocoder instance for channel {ChannelId}", channelId);
+                    logger.Information("Removed vocoder instance for talkgroup {DstId}", dstId);
                 }
             }
         }
