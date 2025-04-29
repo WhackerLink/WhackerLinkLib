@@ -29,13 +29,13 @@ namespace WhackerLinkLib.Vocoder
         /// <summary>
         /// Retrieves or creates a vocoder instance for a given channel.
         /// </summary>
-        public (MBEDecoder Decoder, MBEEncoder Encoder) GetOrCreateVocoder(string channelId, VocoderModes mode)
+        public (MBEDecoder Decoder, MBEEncoder Encoder) GetOrCreateVocoder(string dstId, VocoderModes mode)
         {
             if (disposed) throw new ObjectDisposedException(nameof(VocoderManager));
 
-            return vocoderInstances.GetOrAdd(channelId, _ =>
+            return vocoderInstances.GetOrAdd(dstId, _ =>
             {
-                logger.Information("Created new vocoder instance for channel {ChannelId}", channelId);
+                logger.Information("Created new vocoder instance for channel {DstId}", dstId);
                 return CreateVocoderInstance(mode);
             });
         }
