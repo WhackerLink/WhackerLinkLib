@@ -26,32 +26,72 @@ namespace WhackerLinkLib.Models
     /// </summary>
     public enum PacketType
     {
-        UNKOWN = 0x00,
-        AUDIO_DATA = 0x01,
-        GRP_AFF_REQ = 0x02,
-        GRP_AFF_RSP = 0x03,
-        AFF_UPDATE = 0x04,
-        GRP_VCH_REQ = 0x05,
-        GRP_VCH_RLS = 0x06,
-        GRP_VCH_RSP = 0x07,
-        U_REG_REQ = 0x08,
-        U_REG_RSP = 0x09,
-        U_DE_REG_REQ = 0x10,
-        U_DE_REG_RSP = 0x11,
-        EMRG_ALRM_REQ = 0x12,
-        EMRG_ALRM_RSP = 0x13,
-        CALL_ALRT = 0x14,
-        CALL_ALRT_REQ = 0x15,
-        AUTH_DEMAND = 0x16,
-        AUTH_REPLY = 0x17,
-        REL_DEMAND = 0x18,
-        LOC_BCAST = 0x19,
-        SITE_BCAST = 0x20,
-        STS_BCAST = 0x21,
-        SPEC_FUNC = 0x22,
-        ACK_RSP = 0x23,
-        GRP_VCH_UPD = 0x24,
-        NET_FAIL = 0x25,
-        GRP_AFF_RMV = 0x26
+        /// <summary>
+        /// Misc
+        /// </summary>
+        UNKOWN = 0x00,          // UNKOWN
+        AUDIO_DATA = 0x01,      // Audio Packet
+
+        /// <summary>
+        /// Affiliation Opcodes
+        /// </summary>
+        GRP_AFF_REQ = 0x02,     // Group Affiliation Request
+        GRP_AFF_RSP = 0x03,     // Group Affiliation Response
+        AFF_UPDATE = 0x04,      // Affiliation Update Broadcast
+        GRP_AFF_RMV = 0x26,     // Group Affiliation Removal
+
+        /// <summary>
+        /// Registration Opcodes
+        /// </summary>
+        U_REG_REQ = 0x08,       // Unit Registration Request
+        U_REG_RSP = 0x09,       // Unit Registration Response
+        U_DE_REG_REQ = 0x10,    // Unit De Registration Request
+        U_DE_REG_RSP = 0x11,    // Unit De Registration Response
+
+        /// <summary>
+        /// Voice Channel Opcodes
+        /// </summary>
+        GRP_VCH_REQ = 0x05,     // Group Voice Channel Request
+        GRP_VCH_RLS = 0x06,     // Group Voice Channel Release
+        GRP_VCH_RSP = 0x07,     // Group Voice Channel Response
+        REL_DEMAND = 0x18,      // Release Demand
+        GRP_VCH_UPD = 0x24,     // Group Voice Channel Update
+
+        /// <summary>
+        /// Emergencyu Opcodes
+        /// </summary>
+        EMRG_ALRM_REQ = 0x12,   // Emergency Alarm Request
+        EMRG_ALRM_RSP = 0x13,   // Emergency Alarm Response
+
+        /// <summary>
+        /// Call Alert Opcodes
+        /// </summary>
+        CALL_ALRT = 0x14,       // Call Alert
+        CALL_ALRT_REQ = 0x15,   // Call Alert Request (DEPRECATED)
+
+        /// <summary>
+        /// Auth Opcodes
+        /// </summary>
+        AUTH_DEMAND = 0x16,     // Auth Demand
+        AUTH_REPLY = 0x17,      // Auth Reply
+
+        /// <summary>
+        /// Location/Site Opcodes
+        /// </summary>
+        LOC_BCAST = 0x19,       // Location Broadcast
+        SITE_BCAST = 0x20,      // Site Broadcast
+        STS_BCAST = 0x21,       // Status Broadcast
+
+        /// <summary>
+        /// Misc
+        /// </summary>
+        SPEC_FUNC = 0x22,       // Special (extended) Function
+        ACK_RSP = 0x23,         // Acknowledge Response
+        NET_FAIL = 0x25,        // Network Failover
+
+        /// <summary>
+        /// Radio Program Opcodes
+        /// </summary>
+        RAD_PROG_FUNC = 0x90    // Radio Program Function
     }
 }

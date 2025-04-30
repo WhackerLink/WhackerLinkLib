@@ -46,6 +46,7 @@ namespace WhackerLinkLib.Interfaces
         event Action<ACK_RSP> OnAckResponse;
         event Action<SPEC_FUNC> OnSpecialFunction;
         event Action<AudioPacket> OnAudioData;
+        event Action<RAD_PROG_FUNC> OnRadProgFunction;
         event Action OnOpen;
         event Action OnReconnecting;
         event Action OnClose;

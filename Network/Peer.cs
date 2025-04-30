@@ -103,6 +103,9 @@ namespace WhackerLinkLib.Network
                     case (int)PacketType.SPEC_FUNC:
                         OnSpecialFunction?.Invoke(data["data"].ToObject<SPEC_FUNC>());
                         break;
+                    case (int)PacketType.RAD_PROG_FUNC:
+                        OnRadProgFunction?.Invoke(data["data"].ToObject<RAD_PROG_FUNC>());
+                        break;
                     case (int)PacketType.AUDIO_DATA:
                         OnAudioData?.Invoke(data["data"].ToObject<AudioPacket>());
                         break;
@@ -196,6 +199,7 @@ namespace WhackerLinkLib.Network
         public event Action<ACK_RSP> OnAckResponse;
         public event Action<SPEC_FUNC> OnSpecialFunction;
         public event Action<AudioPacket> OnAudioData;
+        public event Action<RAD_PROG_FUNC> OnRadProgFunction;
         public event Action OnOpen;
         public event Action OnReconnecting;
         public event Action OnClose;
