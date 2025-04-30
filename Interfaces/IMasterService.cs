@@ -40,6 +40,7 @@ namespace WhackerLinkLib.Interfaces
         AuthKeyFileManager GetAuthManager();
         bool GetRidAclEnabled();
         void Start(CancellationToken cancellationToken);
+        void Stop();
         void BroadcastPacket(string packet, string skipClientId = null);
         void BroadcastPacket(string message, List<string> clientIds, string skipClientId = null);
     }
