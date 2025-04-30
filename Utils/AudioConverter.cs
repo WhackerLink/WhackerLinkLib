@@ -134,6 +134,27 @@ namespace WhackerLinkLib.Utils
             }
             return pcm16;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="gain"></param>
+        public static void ApplyPcm16Gain(byte[] buffer, float gain)
+        {
+            for (int i = 0; i < buffer.Length; i += 2)
+            {
+                short sample = (short)(buffer[i] | (buffer[i + 1] << 8));
+                float scaled = sample * gain;
+
+                if (scaled > short.MaxValue) scaled = short.MaxValue;
+                if (scaled < short.MinValue) scaled = short.MinValue;
+
+                short newSample = (short)scaled;
+                buffer[i] = (byte)(newSample & 0xFF);
+                buffer[i + 1] = (byte)((newSample >> 8) & 0xFF);
+            }
+        }
     }
 }
 
